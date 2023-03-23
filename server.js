@@ -1,5 +1,5 @@
 const app = require('./app')
-const port = 3000;
+const port = 8080;
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 

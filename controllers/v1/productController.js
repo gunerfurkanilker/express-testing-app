@@ -40,7 +40,6 @@ exports.createProduct = async (req,res) => {
 }
 
 exports.updateProduct = async (req,res) => {
-
     try {
         await productModel.updateProduct(req);
         res.status(200);
@@ -49,10 +48,11 @@ exports.updateProduct = async (req,res) => {
             message: 'Product is successfully updated!'
         })
     }catch (err){
+
         res.status(400);
         res.json({
             status: 'failed',
-            message: err.message
+            message: 'Test'
         })
     }
 }

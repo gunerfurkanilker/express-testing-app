@@ -29,8 +29,7 @@ exports.updateProduct = async (req) => {
     return await this.productSchemaInstance.updateOne({_id: req.params.id},{
         productName: req.body.productName,
         productDescription: req.body.productDescription,
-        productCode: req.body.productCode,
-        productAmount: req.body.productAmount
+        productCode: req.body.productCode
     });
 
 };

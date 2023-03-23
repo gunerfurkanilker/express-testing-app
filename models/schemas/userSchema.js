@@ -23,10 +23,12 @@ const userSchema = new mongoose.Schema({
 
 
 const cryptPassword = async function (next) {
-    this.password = await bcrypt.hash(this.password,10);
+    if(this.password)
+        this.password = await bcrypt.hash(this.password,10);
     next();
 }
 
+userSchema.pre('findOneAndUpdate',cryptPassword);
 userSchema.pre('create',cryptPassword);
 userSchema.pre('save',cryptPassword);
 

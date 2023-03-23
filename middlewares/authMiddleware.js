@@ -6,6 +6,12 @@ exports.checkToken = async (req, res, next) => {
         next();
     }catch (err) {
         res.status(400);
+        if (!req.headers.authorization) {
+            return res.status(403).json(res.json({
+                status: 'failed',
+                message: 'No credentials sent! Please login to system'
+            }));
+        }
         if(err.name === "TokenExpiredError")
         {
             res.json({
@@ -26,7 +32,6 @@ exports.checkToken = async (req, res, next) => {
             status: 'failed',
             message: err
         })
-        return;
     }
 
 
